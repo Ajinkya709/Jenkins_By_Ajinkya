@@ -1,0 +1,109 @@
+jenkins by Ajinkya
+====================================================================================================================================================================
+-create ec2 instance of ubuntu (master)
+	type = t2.medium
+	storage = 15gb
+	connect to that instance and chage name for understanding purpose as jenkins_host
+	name change cmnd = sudo hostnamectl set-hostname jenkins_master
+	reboot to reflect change = sudo reboot
+	restart jenkins ====> sudo systemctl restart jenkins
+====================================================================================================================================================================	
+--installing java 
+	- sudo apt update ===============> updates the system 
+	-sudo apt install fontconfig openjdk-21-jre ================> java install 
+	- java -version  ================> java version check 
+-- jenkins installation 
+	-running active check commnad ========> systemctl status jenkins
+	-auto enable jenkins when we rebbot systemn ========> sudo systemctl enable jenkins
+	-- password path access ==========> sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+   jenkins url =====> http://18.118.0.231:8080/
+   
+   
+----for creating freestyle job 
+			echo "hello ainexus"
+			echo "welcome to first freestyle job"
+			mkdir -p offline_4
+			echo "offline_4 folder created"
+====================================================================================================================================================================
+
+
+----for creating declarative pipeline 
+	    script = 
+		approve groveey sand box tick
+		
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                echo 'Pulling source code from repository...'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Building the application...'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Running unit tests...'
+            }
+        }
+
+        stage('Deploy to Production') {
+            steps {
+                echo 'Deploying application to production environment...'
+            }
+        }
+
+        stage('Success Notification') {
+            steps {
+                echo 'Deployment completed successfully!'
+            }
+        }
+    }
+}
+====================================================================================================================================================================
+creating node in gui 
+         /home/ubuntu
+		 public ip of node ===> host
+		 lunch method ======> lunch agent via ssh
+		 Host Key Verification Strategy ====> non verifying verification stratagy
+		 
+====================================================================================================================================================================
+node creation make same congiguration ec 2 
+installl java on that ec2 
+no need to install jenkins on that node
+
+to acces the keys we need command  on master
+		--cd ~/.ssh
+		--ls
+		--ssh-keygen
+		--ls
+		-- cat id_ed25519
+	private should be on master 
+	public should be on node
+	
+	master warchi public key node la takaychi 
+	  cat id_ed25519.public
+	  copy the key 
+	  go to node 
+		-cd ~/.ssh
+		-ls
+		vim authorized_keys
+		 hya wrchya key madhe master warchi public key copy keli
+		 esc :Wq 
+		 cd declerative_pipeline
+		install docker 
+			sudo apt-get install docker.io ====> docker install 
+			sudo usermod -aG docker $USER && newgrp docker =============> permission to docker 
+		    sudo apt-get install docker-compose-v2
+	
+	
+	
+	
+	
+	
