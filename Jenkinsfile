@@ -57,7 +57,7 @@ pipeline {
 
     post {
         always {
-            echo "🧹 Cleaning up after build...okay bye..thanks"
+            echo "🧹 thanks for listening me"
         }
     }
 }
